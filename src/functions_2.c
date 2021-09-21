@@ -6,7 +6,7 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:08:25 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 13:32:16 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/21 18:08:13 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_struct	*sb(t_struct *stack, int x)
 		return (stack);
 	element = malloc(sizeof(t_list));
 	if (!element)
-		return (NULL);
+		exit(EXIT_FAILURE);
 	element->value = stack->stack_b->next->value;
 	element->next = NULL;
 	cur = stack->stack_b->next;

@@ -6,13 +6,13 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/18 14:36:59 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 13:32:16 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/21 18:07:59 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	size_t_list(t_list *stack)
+int	size_list(t_list *stack)
 {
 	int	i;
 
@@ -29,27 +29,28 @@ int	size_t_list(t_list *stack)
 
 void	set_chunck(t_struct *stack)
 {
-	int		nb_chunck;
-	int		chunck_interval;
-	int		i;
+	int	*tab;
+	int	nb_chunck;
+	int	i;
+	int	pos_number;
 
-	find_pos_max(stack, stack->stack_a);
-	find_pos_min(stack, stack->stack_a);
-	if (size_t_list(stack->stack_a) <= 100)
+	tab = ft_sort_int_tab(stack);
+	if (size_list(stack->stack_a) <= 100)
 		nb_chunck = NB_CHUNCK_100;
 	else
 		nb_chunck = NB_CHUNCK_500;
-	chunck_interval = (((long)stack->max - (long)stack->min) / nb_chunck) + 1;
 	stack->chunck = (int *)malloc(sizeof(int) * nb_chunck + 1);
 	if (!stack->chunck)
 		exit(EXIT_FAILURE);
-	stack->chunck[nb_chunck] = '\0';
 	i = 0;
 	while (i < nb_chunck)
 	{
-		stack->chunck[i] = (long)stack->min + ((i + 1) * chunck_interval);
+		pos_number = (i + 1) * (size_list(stack->stack_a) / nb_chunck);
+		stack->chunck[i] = tab[pos_number];
 		i++;
 	}
+	stack->chunck[nb_chunck] = '\0';
+	free (tab);
 }
 
 void	hold_first(t_struct *stack, int chunck)

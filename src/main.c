@@ -6,7 +6,7 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 16:51:44 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 13:43:55 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/21 18:09:09 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,14 @@ static void	init_struct(t_struct *stack)
 	stack->nb_rra = 0;
 }
 
-static void	ft_free(t_struct *stack)
+void	ft_free(t_struct *stack)
 {
-	freet_list(stack->stack_a);
-	freet_list(stack->stack_b);
-	free(stack);
+	if (stack->stack_a)
+		freelist(stack->stack_a);
+	if (stack->stack_b)
+		freelist(stack->stack_b);
+	if (stack)
+		free(stack);
 }
 
 int	main(int ac, char *av[])
@@ -93,9 +96,9 @@ int	main(int ac, char *av[])
 		ft_free(stack);
 		return (0);
 	}
-	if (size_t_list(stack->stack_a) == 3)
+	if (size_list(stack->stack_a) == 3)
 		stack = sort_3(stack);
-	else if (size_t_list(stack->stack_a) == 5)
+	else if (size_list(stack->stack_a) == 5)
 		stack = sort_5(stack);
 	else
 		stack = sort_big_stack(stack);

@@ -6,17 +6,16 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:06:44 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 13:32:16 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/21 17:44:51 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "../push_swap.h"
 
 static int	ra_or_rra(t_struct *stack)
 {
 	stack->nb_ra = stack->pos_first;
-	stack->nb_rra = size_t_list(stack->stack_a) - stack->pos_second;
+	stack->nb_rra = size_list(stack->stack_a) - stack->pos_second;
 	if (stack->nb_ra <= stack->nb_rra)
 		return (1);
 	else
@@ -44,9 +43,9 @@ static t_struct	*push_max_to_a(t_struct *stack)
 	stack->pos_max = 0;
 	find_pos_max(stack, stack->stack_b);
 	stack->nb_ra = stack->pos_max;
-	stack->nb_rra = size_t_list(stack->stack_b) - stack->pos_max;
+	stack->nb_rra = size_list(stack->stack_b) - stack->pos_max;
 	i = 0;
-	if (stack->pos_max <= (size_t_list(stack->stack_b) / 2))
+	if (stack->pos_max <= (size_list(stack->stack_b) / 2))
 	{
 		while (i++ < stack->nb_ra)
 			r(stack, 'b');
@@ -92,12 +91,14 @@ t_struct	*sort_big_stack(t_struct *stack)
 	i = -1;
 	set_chunck(stack);
 	stack->pos_max = 0;
-	if (size_t_list(stack->stack_a) <= 100)
+	if (size_list(stack->stack_a) <= 100)
 		nb_chunck = NB_CHUNCK_100;
 	else
 		nb_chunck = NB_CHUNCK_500;
 	while (i++ < nb_chunck)
 		stack = push_chunck_to_b(stack, i);
+	while (stack->stack_a)
+		p(stack, 'b');
 	while (stack->stack_b)
 		stack = push_max_to_a(stack);
 	free(stack->chunck);

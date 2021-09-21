@@ -6,7 +6,7 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:14:06 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 13:41:03 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/21 14:32:55 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ t_list	*remove_front(t_list *stack)
 	return (stack);
 }
 
-t_list	*freet_list(t_list *stack)
+t_list	*freelist(t_list *stack)
 {
 	t_list	*temp;
 

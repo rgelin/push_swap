@@ -6,7 +6,7 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:10:52 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 13:36:08 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/21 17:57:30 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_struct
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
+	int		size_list;
 	int		min;
 	int		max;
 	int		pos_min;
@@ -44,6 +45,7 @@ int			is_digit(char *str);
 long		ft_atoi(char *str);
 char		**ft_split(char const *s, char c);
 int			count_words(char const *str, char c);
+int			*ft_sort_int_tab(t_struct *stack);
 
 void		free_tab(char **tab, int nb_arg);
 int			check_error_multiple_arg(int ac, char *av[]);
@@ -55,8 +57,8 @@ t_list		*add_front(t_list *stack, int x);
 t_list		*add_back(t_list *stack, int x);
 t_list		*remove_back(t_list *stack);
 t_list		*remove_front(t_list *stack);
-t_list		*freet_list(t_list *stack);
-int			size_t_list(t_list *stack);
+t_list		*freelist(t_list *stack);
+int			size_list(t_list *stack);
 
 t_struct	*p(t_struct *stack, char c);
 t_struct	*r(t_struct *stack, char c);
@@ -76,6 +78,8 @@ void		set_chunck(t_struct *stack);
 void		hold_first(t_struct *stack, int chunck);
 void		hold_second(t_struct *stack, int chunck);
 t_struct	*sort_big_stack(t_struct *stack);
+
+void		ft_free(t_struct *stack);
 
 # define	NB_CHUNCK_100	5
 # define	NB_CHUNCK_500	11
