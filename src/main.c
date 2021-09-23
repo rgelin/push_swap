@@ -6,7 +6,7 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 16:51:44 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 18:09:09 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/23 14:10:35 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	init_struct(t_struct *stack)
 	stack->nb_rra = 0;
 }
 
-void	ft_free(t_struct *stack)
+static void	ft_free(t_struct *stack)
 {
 	if (stack->stack_a)
 		freelist(stack->stack_a);

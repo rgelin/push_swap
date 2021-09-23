@@ -6,7 +6,7 @@
 /*   By: rgelin <rgelin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/08 17:10:52 by rgelin            #+#    #+#             */
-/*   Updated: 2021/09/21 17:57:30 by rgelin           ###   ########.fr       */
+/*   Updated: 2021/09/23 14:11:57 by rgelin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,7 @@ void		hold_first(t_struct *stack, int chunck);
 void		hold_second(t_struct *stack, int chunck);
 t_struct	*sort_big_stack(t_struct *stack);
 
-void		ft_free(t_struct *stack);
-
-# define	NB_CHUNCK_100	5
-# define	NB_CHUNCK_500	11
+# define NB_CHUNCK_100 5
+# define NB_CHUNCK_500 11
 
 #endif
